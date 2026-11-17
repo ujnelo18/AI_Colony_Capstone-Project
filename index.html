@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <title>Roomly — Find your focus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Roomly home">
+          <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+          <span>roomly<span class="brand-period">.</span></span>
+        </a>
+        <div class="campus-switch">
+          <span class="campus-icon">⌖</span>
+          <span><small>YOUR CAMPUS</small><strong>North Campus</strong></span>
+          <span class="chevron">⌄</span>
+        </div>
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav">
+          <button class="nav-item active" data-view="discover"><span class="nav-icon">⌕</span>Find a room</button>
+          <button class="nav-item" data-view="bookings"><span class="nav-icon">▤</span>My bookings <span class="nav-count" id="booking-count">2</span></button>
+          <button class="nav-item" data-view="released"><span class="nav-icon">↻</span>Just released <span class="live-dot"></span></button>
+          <button class="nav-item" data-view="news"><span class="nav-icon">▧</span>Campus news <span class="news-nav-label">News</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-spark">✳</div>
+            <strong>Need a hand?</strong>
+            <p>Find answers to common room booking questions.</p>
+            <a href="mailto:campus.help@example.edu">Visit help centre <span>↗</span></a>
+          </div>
+          <button class="profile-button" aria-label="Student profile">
+            <span class="avatar">JD</span>
+            <span class="profile-copy"><strong>Jordan Davis</strong><small>Student account</small></span>
+            <span class="profile-menu">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs">North Campus <span>/</span> <strong id="breadcrumb-current">Find a room</strong></div>
+          <div class="topbar-actions">
+            <span class="today-label" id="today-label"></span>
+            <button class="icon-button notification-button" aria-label="Notifications" id="notification-button">
+              <span>♧</span><i></i>
+            </button>
+            <button class="mobile-profile" aria-label="Open profile">JD</button>
+          </div>
+        </header>
+
+        <div class="announcement" id="announcement-banner">
+          <span class="announcement-icon">◷</span>
+          <p><strong>Planned campus maintenance</strong><span> — Library spaces may be unavailable Saturday, Nov 7 from 2:00–4:00 AM.</span></p>
+          <button class="announcement-link" data-view="news">Read update <span>↗</span></button>
+          <button aria-label="Dismiss announcement" id="dismiss-announcement">×</button>
+        </div>
+
+        <section class="view-panel" id="discover-view">
+          <section class="welcome-row">
+            <div class="hero-copy">
+              <p class="eyebrow"><span class="eyebrow-line"></span> MAKE ROOM FOR WHAT MATTERS</p>
+              <h1>Your next big idea<br />needs the <em>right space.</em></h1>
+              <p class="welcome-subtitle">Find your corner of campus to think, make, and get things done.</p>
+              <div class="hero-actions">
+                <button class="hero-primary" id="explore-spaces">Find your space <span>→</span></button>
+                <button class="hero-secondary" data-view="news">What’s happening <span>↗</span></button>
+              </div>
+              <div class="hero-proof"><span class="proof-avatars"><i>J</i><i>A</i><i>M</i></span><span><strong>Made for campus life</strong><small>Study solo. Make things together.</small></span></div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hero-visual-glow"></div><div class="hero-visual-window"><span></span><span></span><span></span><span></span></div>
+              <div class="hero-visual-sun"></div><div class="hero-visual-plant plant-one">♣</div><div class="hero-visual-plant plant-two">♣</div>
+              <div class="hero-table"></div><div class="hero-chair"></div>
+              <div class="hero-note"><span class="note-icon">✳</span><span><strong>A space to focus</strong><small>Just around the corner</small></span><span class="note-arrow">↗</span></div>
+              <span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span>
+            </div>
+          </section>
+
+          <section class="search-panel" id="search-section" aria-label="Search for a room">
+            <div class="search-heading">
+              <div><span class="search-heading-icon">⌕</span><div><h2>Find a room</h2><p>Tell us what you need. We’ll find the right space.</p></div></div>
+              <button class="text-button" id="clear-filters">Reset filters</button>
+            </div>
+            <form id="search-form">
+              <div class="search-fields">
+                <label class="field field-date"><span>DATE</span><span class="input-wrap"><span class="input-icon">▦</span><input id="date-input" type="date" /></span></label>
+                <label class="field"><span>FROM</span><span class="input-wrap"><span class="input-icon">◷</span><select id="start-time"></select></span></label>
+                <label class="field"><span>UNTIL</span><span class="input-wrap"><span class="input-icon">◷</span><select id="end-time"></select></span></label>
+                <label class="field"><span>PEOPLE</span><span class="input-wrap"><span class="input-icon">♙</span><select id="capacity"><option value="1">Any size</option><option value="2">2+ people</option><option value="4">4+ people</option><option value="6">6+ people</option><option value="8">8+ people</option><option value="12">12+ people</option></select></span></label>
+                <button class="search-button" type="submit"><span>Search rooms</span><span>→</span></button>
+              </div>
+              <div class="filter-row">
+                <label class="filter-select"><span class="filter-label">Room type</span><select id="room-type"><option value="all">Any type</option><option value="Study">Study room</option><option value="Seminar">Seminar room</option><option value="Other">Other</option></select><span class="select-chevron">⌄</span></label>
+                <label class="filter-select"><span class="filter-label">Amenities</span><select id="amenity"><option value="all">Any amenity</option><option value="Projector">Projector</option><option value="Whiteboard">Whiteboard</option><option value="Power outlets">Power outlets</option><option value="Video conferencing">Video conferencing</option></select><span class="select-chevron">⌄</span></label>
+                <label class="filter-select"><span class="filter-label">Building</span><select id="building"><option value="all">Anywhere on campus</option><option value="Library">Main Library</option><option value="Innovation">Innovation Hall</option><option value="Arts">Arts Building</option><option value="Science">Science Centre</option></select><span class="select-chevron">⌄</span></label>
+                <label class="filter-select purpose-filter"><span class="filter-label">Purpose</span><select id="purpose"><option value="all">Any purpose</option><option value="Quiet study">Quiet study</option><option value="Group project">Group project</option><option value="Presentation">Presentation</option></select><span class="select-chevron">⌄</span></label>
+              </div>
+            </form>
+          </section>
+
+          <section class="results-section">
+            <div class="results-heading">
+              <div><h2 id="results-title">Available rooms <span class="result-count" id="result-count">6 spaces</span></h2><p id="results-caption">Spaces available for your selected time</p></div>
+              <div class="results-controls">
+                <button class="view-toggle active" aria-label="Grid view" data-layout="grid">▦</button><button class="view-toggle" aria-label="List view" data-layout="list">☰</button>
+                <label class="sort-select">Sort by <select id="sort-select"><option value="recommended">Recommended</option><option value="capacity">Capacity</option><option value="name">Room name</option></select></label>
+              </div>
+            </div>
+            <div class="quick-tabs" role="tablist">
+              <button class="quick-tab active" data-tab="all">All rooms <span id="all-count">6</span></button>
+              <button class="quick-tab" data-tab="soon">Available soon <span>↗</span></button>
+              <button class="quick-tab" data-tab="released">Just released <span class="tab-live"></span></button>
+            </div>
+            <div class="room-grid" id="room-grid"></div>
+            <div class="empty-state hidden" id="empty-state">
+              <div class="empty-icon">⌕</div><h3>No rooms found</h3><p>Try adjusting your filters or choosing another time.</p><button class="outline-button" id="empty-reset">Clear filters</button>
+            </div>
+            <div class="results-footer"><span><span class="fresh-dot"></span> Availability updated just now</span><span>Showing <strong id="showing-count">6</strong> of 300 spaces</span></div>
+          </section>
+        </section>
+
+        <section class="view-panel hidden" id="bookings-view">
+          <div class="page-heading"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR SCHEDULE</p><h1>Your bookings.</h1><p class="welcome-subtitle">Everything you’ve got coming up, all in one place.</p></div>
+          <div class="standing-strip">
+            <div class="standing-main"><span class="standing-icon">↗</span><div><span class="standing-caption">THIS WEEK</span><strong><span id="used-count">3</span> <small>/ 5 bookings used</small></strong></div><div class="usage-track"><span id="usage-fill"></span></div></div>
+            <div class="standing-divider"></div>
+            <div class="standing-stat"><span class="stat-icon amber">◉</span><span><small>NO-SHOWS · 30 DAYS</small><strong id="no-show-count">1 <em>of 3</em></strong></span></div>
+            <div class="standing-status" id="standing-status"><span class="status-check">✓</span><span><strong>You’re all clear</strong><small>Keep up the good work</small></span></div>
+          </div>
+          <div class="booking-toolbar"><div class="booking-tabs"><button class="booking-tab active" data-booking-filter="upcoming">Upcoming <span id="upcoming-count">2</span></button><button class="booking-tab" data-booking-filter="past">Past bookings</button></div><button class="outline-button" id="find-room-shortcut">＋ Find a room</button></div>
+          <div class="booking-list" id="booking-list"></div>
+          <div class="empty-state hidden" id="booking-empty"><div class="empty-icon">▤</div><h3>Nothing on your schedule</h3><p>Your next great study session starts with finding a space.</p><button class="primary-button" id="booking-empty-search">Find a room <span>→</span></button></div>
+        </section>
+
+        <section class="view-panel hidden" id="released-view">
+          <div class="page-heading"><p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE MORE ROOM</p><h1>Freshly freed.</h1><p class="welcome-subtitle">Plans change. These spaces just opened up — make them yours.</p></div>
+          <div class="released-note"><span>✳</span><p><strong>Good timing.</strong> Recently cancelled rooms show here for up to 2 hours, or until their start time.</p></div>
+          <div class="released-grid" id="released-grid"></div>
+        </section>
+
+        <section class="view-panel hidden" id="news-view">
+          <div class="news-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span> THE LATEST FROM CAMPUS</p><h1>Good things are<br />happening <em>here.</em></h1><p class="welcome-subtitle">Room updates, campus stories, and little things worth knowing.</p></div>
+            <div class="news-heading-mark" aria-hidden="true">✳</div>
+          </div>
+          <section class="news-feature">
+            <div class="news-feature-art" aria-hidden="true"><span class="feature-art-sun"></span><span class="feature-art-book">ROOM<br />TO GROW</span><span class="feature-art-leaf">✳</span></div>
+            <div class="news-feature-copy"><span class="news-category">CAMPUS UPDATE <span>·</span> NOV 3</span><h2>More room to make, meet, and get things done.</h2><p>We’re making it easier to find the right place for every kind of work. Explore newly refreshed spaces and see what’s changing around campus.</p><details class="news-story"><summary>Read the story <span>↗</span></summary><p>From quiet corners for deep focus to flexible rooms for group projects, campus spaces are here to help you do your best work. Check room details before you book, and keep an eye on this page for new spaces and service updates.</p></details></div>
+          </section>
+          <div class="news-section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> GOOD TO KNOW</p><h2>Campus notices</h2></div><span class="news-updated"><i></i> Updated today</span></div>
+          <div class="news-grid">
+            <article class="news-card news-card-maintenance"><div class="news-card-top"><span class="news-icon">◷</span><span class="news-category">SPACE NOTICE</span><span class="news-date">NOV 3</span></div><h3>Planned library maintenance</h3><p>Library spaces may be unavailable Saturday, Nov 7 from 2:00–4:00 AM.</p><details class="news-story"><summary>Read the announcement <span>↗</span></summary><p>Some library rooms will be temporarily unavailable during this maintenance window. Please plan ahead and check room availability before making a booking. We appreciate your patience while we make improvements.</p></details></article>
+            <article class="news-card news-card-hours"><div class="news-card-top"><span class="news-icon">☼</span><span class="news-category">CAMPUS LIFE</span><span class="news-date">OCT 28</span></div><h3>Find your late-night study spot</h3><p>Need a little more time? Discover welcoming spaces for those after-hours study sessions.</p><details class="news-story"><summary>Explore the story <span>↗</span></summary><p>Make a plan that works for you: search by date, time, and room amenities to find a space that fits your next study session. Availability can change, so book ahead when you can.</p></details></article>
+            <article class="news-card news-card-community"><div class="news-card-top"><span class="news-icon">✳</span><span class="news-category">ROOMLY NOTES</span><span class="news-date">OCT 21</span></div><h3>Great work happens together</h3><p>From quick brainstorms to big presentations, there’s a campus space for your crew.</p><details class="news-story"><summary>Get inspired <span>↗</span></summary><p>Bring your team together in a room with the tools you need. Filter for capacity, whiteboards, projectors, and more to find a comfortable place to collaborate.</p></details></article>
+          </div>
+          <div class="news-footer"><span>Looking for a place to work?</span><button class="primary-button" data-view="discover">Find a room <span>→</span></button></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+    <dialog class="booking-dialog" id="booking-dialog">
+      <button class="dialog-close" id="dialog-close" aria-label="Close dialog">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
